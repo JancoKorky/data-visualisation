@@ -46,8 +46,8 @@ class CountryLineGraph {
   }
 
   drawCountryName() {
-    this.setupBeforeWritingText(60);
-    text(this.country, width / 2, this.graphHeigth + 100);
+    this.setupBeforeWritingText(25);
+    text(this.country+" population", width / 2, this.graphHeigth + 100);
   }
 
   drawAxis() {

@@ -4,6 +4,7 @@ class Select {
     this.positionY = positionY;
     this.countries_data = countries_data;
     this.size = size.toString().concat("px");
+
     this.sel = undefined;
     this.parsed_data = [];
     this.sortData();
@@ -27,7 +28,7 @@ class Select {
   drawSelect() {
     this.sel = createSelect();
     this.sel.position(this.positionX, this.positionY);
-    this.sel.style("width",this.size)
+    this.sel.style("width", this.size);
     for (const [iterator, data] of this.parsed_data) {
       this.sel.option(data.country_name, iterator);
     }

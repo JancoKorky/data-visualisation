@@ -25,7 +25,16 @@ function draw() {
     //   arrOfBars[countrySlider.getSliderValue()].draw_mulltiple_bars();
     drawGraphOfCountry(countrySelect.getSelectValue());
   }
+  drawTitle();
 }
+
+function drawTitle() {
+  fill(TEXT_COLOR);
+  textSize(35);
+  textAlign(CENTER);
+  text("Graph to show population by country from 50s", width / 2, 75);
+}
+
 function drawGraphOfCountry(numFromArr) {
   arrOfGraphs[numFromArr].drawCountryName();
   arrOfGraphs[numFromArr].drawAxis();
@@ -39,9 +48,9 @@ function createGraphs() {
   for (let [index, oneObject] of Object.entries(dataFromJson)) {
     arrOfGraphs[index] = new CountryLineGraph(
       100,
+      150,
       undefined,
-      undefined,
-      250,
+      350,
       oneObject.country_name,
       oneObject.country_data
     );
@@ -56,6 +65,6 @@ function createCountrySlider() {
 }
 
 function createCountrySelect() {
-  countrySelect = new Select(windowWidth/2-150/2, 50, dataFromJson, 150);
+  countrySelect = new Select(windowWidth / 8 - 150 / 2, 200, dataFromJson, 150);
   countrySelect.drawSelect();
 }
