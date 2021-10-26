@@ -35,6 +35,16 @@ class Select {
     this.sel.changed(this.getSelectValue);
   }
 
+  drawTitle() {
+    fill(0)
+    let title = createP("Choose country:")
+    title.style('font-size', '20px');
+    title.style('font-weight', 'bold');
+    title.style('font-family', 'arial')
+
+    title.position(this.positionX, this.positionY-55)
+  }
+
   getSelectValue() {
     if (this.sel) {
       // console.log(this.sel.value());
