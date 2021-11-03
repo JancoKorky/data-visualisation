@@ -15,6 +15,7 @@ class CountryLineGraph {
     this.max = this.helperArr.reduce((a, b) => Math.max(a, b));
     this.roundLeadUp = roundLeadingNumUp(this.max);
     this.arrOfAxis = convertNumberToQuarters(this.roundLeadUp);
+    this.angle = 0;
   }
 
   drawEllipses() {
@@ -23,6 +24,9 @@ class CountryLineGraph {
     for (let i = 0; i < this.data_length; i++) {
       let x = i * (this.real_sizeX / (this.data_length - 1)) + this.startX + 25;
       let y = this.graphHeigth - map(this.helperArr[i], 0, this.roundLeadUp, 0, this.graphHeigth - this.startY - 30);
+      if (this.yearIsMoreThen2015(this.data[i].year)) {
+        fill(150, 0, 0);
+      }
       ellipse(x, y, 7);
     }
   }
@@ -37,6 +41,9 @@ class CountryLineGraph {
       let x = i * (this.real_sizeX / (this.data_length - 1)) + this.startX + 25;
       let y = this.graphHeigth - map(this.helperArr[i], 0, this.roundLeadUp, 0, this.graphHeigth - this.startY - 30);
       if (i > 0) {
+        if (this.yearIsMoreThen2015(this.data[i].year, false)) {
+          stroke(150, 0, 0, 125);
+        }
         line(px, py, x, y);
       }
       //store the last position
@@ -47,7 +54,7 @@ class CountryLineGraph {
 
   drawCountryName() {
     this.setupBeforeWritingText(25);
-    text(this.country+" population", width / 2, this.graphHeigth + 100);
+    text(this.country + " population", width / 2, this.graphHeigth + 100);
   }
 
   drawAxis() {
@@ -61,11 +68,22 @@ class CountryLineGraph {
 
     for (let i = 0; i < this.data_length; i++) {
       let x = i * (this.real_sizeX / (this.data_length - 1)) + this.startX + 25;
+      if (this.yearIsMoreThen2015(this.data[i].year)) {
+        fill(150, 0, 0);
+      }
       text(this.data[i].year, x, this.graphHeigth + 25);
       stroke(TEXT_COLOR);
+      if (this.yearIsMoreThen2015(this.data[i].year)) {
+        stroke(150, 0, 0);
+      }
       line(x, this.graphHeigth + 5, x, this.graphHeigth - 5);
       noStroke();
     }
+
+    textSize(14)
+    text("each year", this.startX + this.graphWidth / 1.45, this.graphHeigth + 50);
+    fill(TEXT_COLOR)
+    text("each 5 years until 2015", this.startX + this.graphWidth / 4, this.graphHeigth + 50);
   }
 
   drawPopulation() {
@@ -89,6 +107,24 @@ class CountryLineGraph {
 
       noStroke();
     }
+    push();
+    angleMode(DEGREES);
+    textSize(14);
+
+    translate(this.startX - 80, yPos + this.graphHeigth / 4);
+    rotate(270);
+    text("Population", 25, 0);
+
+    pop();
+  }
+
+  yearIsMoreThen2015(data, equal = true) {
+    if (data > 2016) {
+      return true;
+    } else if (data >= 2016 && equal) {
+      return true;
+    }
+    return false;
   }
 
   setupBeforeWritingText(size = 10) {

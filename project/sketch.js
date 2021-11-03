@@ -65,7 +65,7 @@ function createCountrySlider() {
 }
 
 function createCountrySelect() {
-  countrySelect = new Select(windowWidth / 8 - 150 / 2, 200, dataFromJson, 150);
+  countrySelect = new Select(windowWidth / 5 - 150 / 2, 200, dataFromJson, 150);
   countrySelect.drawSelect();
   countrySelect.drawTitle();
 }
