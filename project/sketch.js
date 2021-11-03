@@ -32,7 +32,7 @@ function drawTitle() {
   fill(TEXT_COLOR);
   textSize(35);
   textAlign(CENTER);
-  text("Graph to show population by country from 50s", width / 2, 75);
+  text("Population by country from 50s", width / 2, 75);
 }
 
 function drawGraphOfCountry(numFromArr) {

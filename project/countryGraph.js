@@ -54,7 +54,7 @@ class CountryLineGraph {
 
   drawCountryName() {
     this.setupBeforeWritingText(25);
-    text(this.country + " population", width / 2, this.graphHeigth + 100);
+    text(this.country + " population", width / 2, this.startY - 20);
   }
 
   drawAxis() {
@@ -80,9 +80,9 @@ class CountryLineGraph {
       noStroke();
     }
 
-    textSize(14)
+    textSize(14);
     text("each year", this.startX + this.graphWidth / 1.45, this.graphHeigth + 50);
-    fill(TEXT_COLOR)
+    fill(TEXT_COLOR);
     text("each 5 years until 2015", this.startX + this.graphWidth / 4, this.graphHeigth + 50);
   }
 
@@ -111,7 +111,7 @@ class CountryLineGraph {
     angleMode(DEGREES);
     textSize(14);
 
-    translate(this.startX - 80, yPos + this.graphHeigth / 4);
+    translate(this.startX - 80, this.startX + this.graphHeigth / 2);
     rotate(270);
     text("Population", 25, 0);
 
