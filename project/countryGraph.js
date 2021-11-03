@@ -113,7 +113,7 @@ class CountryLineGraph {
 
     translate(this.startX - 80, this.startX + this.graphHeigth / 2);
     rotate(270);
-    text("Population", 25, 0);
+    text("Population", 50, 0);
 
     pop();
   }
